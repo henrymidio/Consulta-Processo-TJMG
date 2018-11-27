@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="processo" type="org.cptjmg.consultaprocesso.model.Processo"/>
+    </data>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#fff"
     android:orientation="vertical"
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/numProcesso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="01772277020148130479" />
+        android:text="" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,9 +35,10 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/classe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ação Penal - Procedimento Ordinário"
+            android:text="@{processo.classe}"
             android:textColor="@android:color/white" />
 
         <TextView
@@ -45,9 +51,10 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/assunto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PENAL > Crimes contra a liberdade pessoal > Ameaça"
+            android:text="@{processo.assunto}"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
@@ -66,34 +73,37 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="VÍTIMA"
+                android:text="RÉU"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/reu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="E.A.S.P." />
+                android:text="@{processo.partes.reu}" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical"
             android:padding="8dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RÉU"
+                android:text="VÍTIMA"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/vitima"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HENRIQUE EMIDIO DE JESUS" />
+                android:text="@{processo.partes.vitima}" />
 
         </LinearLayout>
 
@@ -115,146 +125,12 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="05 OUT" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2018"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <com.github.vipulasri.timelineview.TimelineView
-            android:id="@+id/time_marker"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:line="@color/colorPrimary"
-            app:linePadding="5dp"
-            app:lineSize="3dp"
-            app:marker="@drawable/timeline_circle"
-            app:markerSize="20dp" />
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            app:cardElevation="3dp"
-            app:contentPadding="15dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="PUBLICADO DESPACHO INTIMAÇÃO"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="CARAPICUÍBA-SP"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-    </LinearLayout>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="05 OUT" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2018"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <com.github.vipulasri.timelineview.TimelineView
-            android:id="@+id/tim_marker"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:line="@color/colorPrimary"
-            app:linePadding="5dp"
-            app:lineSize="3dp"
-            app:marker="@drawable/timeline_circle"
-            app:markerSize="20dp" />
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            app:cardElevation="3dp"
-            app:contentPadding="15dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="JUNTADA DE CARTA PRECATÓRIA "
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-    </LinearLayout>
+        android:layout_margin="8dp"
+        tools:listitem="@layout/item_timeline" />
 
 </LinearLayout>
+</layout>

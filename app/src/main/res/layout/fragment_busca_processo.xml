@@ -6,7 +6,7 @@
     android:background="#fff"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".BuscarProcessoFragment">
+    tools:context=".ui.BuscarProcessoFragment">
 
     <TextView
         android:id="@+id/textView3"
