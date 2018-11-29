@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <data>
+        <variable name="viewModel" type="org.cptjmg.consultaprocesso.ui.ProcessoViewModel"/>
+    </data>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".ui.BuscarProcessoFragment">
+    >
 
     <TextView
         android:id="@+id/textView3"
@@ -51,11 +55,13 @@
         android:text="Nº do processo:" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/numProcesso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number" />
+        android:text="@={viewModel.numProcesso}"
+        android:inputType="number"
+        android:maxLength="17" />
 
     <Button
         android:id="@+id/button"
@@ -72,7 +78,10 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
+        android:onClick="@{() -> viewModel.onBuscarClicked()}"
         android:text="BUSCAR"
         android:textColor="@android:color/background_light" />
 
 </LinearLayout>
+
+</layout>

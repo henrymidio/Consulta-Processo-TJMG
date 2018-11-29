@@ -24,16 +24,16 @@ public class ProcessoRepository {
         retrofit = NetworkServiceLocator.getRetrofit();
     }
 
-    public MutableLiveData<ApiResponse<Processo>> getProcesso(String numProcesso, String comarca) {
+    public MutableLiveData<ApiResponse<Processo>> getProcesso(String numProcesso) {
         final MutableLiveData<ApiResponse<Processo>> result = new MutableLiveData<>();
 
         ProcessoService service = retrofit.create(ProcessoService.class);
-        Call<ApiResponse<Processo>> repos = service.getProcesso(numProcesso, comarca);
+        Call<ApiResponse<Processo>> repos = service.getProcesso(numProcesso);
 
         repos.enqueue(new Callback<ApiResponse<Processo>>() {
             @Override
             public void onResponse(Call<ApiResponse<Processo>> call, Response<ApiResponse<Processo>> response) {
-                Log.e("vitima", response.body().getResult().);
+                //Log.e("vitima", response.body().getResult().);
 
                 try {
                     if(response.isSuccessful()) {

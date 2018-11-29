@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -12,16 +13,18 @@
 
         <TextView
             android:id="@+id/data"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="05 OUT" />
+            android:text="05 OUT"
+            android:textSize="12sp"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/ano"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2018"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="2018" />
     </LinearLayout>
 
     <com.github.vipulasri.timelineview.TimelineView
@@ -55,17 +58,17 @@
                 android:id="@+id/descricao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PUBLICADO DESPACHO INTIMAÇÃO"
                 android:textSize="14sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                tools:text="PUBLICADO DESPACHO INTIMAÇÃO" />
 
             <TextView
                 android:id="@+id/complemento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CARAPICUÍBA-SP"
                 android:textSize="14sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                tools:text="CARAPICUÍBA-SP" />
 
         </LinearLayout>
 

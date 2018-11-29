@@ -10,5 +10,5 @@ import retrofit2.http.Query;
 
 public interface ProcessoService {
     @GET("processos/{numProcesso}/")
-    Call<ApiResponse<Processo>> getProcesso(@Path("numProcesso") String numProcesso, @Query("comarca") String comarca);
+    Call<ApiResponse<Processo>> getProcesso(@Path("numProcesso") String numProcesso);
 }

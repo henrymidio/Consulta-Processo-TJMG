@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="" />
+        android:text=""
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -95,7 +96,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="VÍTIMA"
+                android:text="AUTOR"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -126,7 +127,7 @@
         android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/timelineRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
