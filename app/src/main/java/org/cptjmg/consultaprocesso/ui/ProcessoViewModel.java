@@ -14,6 +14,8 @@ import org.cptjmg.consultaprocesso.model.Processo;
 import org.cptjmg.consultaprocesso.util.SingleLiveEvent;
 import org.cptjmg.consultaprocesso.util.Validator;
 
+import java.util.List;
+
 public class ProcessoViewModel extends ViewModel {
 
     public ObservableField<String> numProcesso = new ObservableField<>();
@@ -36,15 +38,20 @@ public class ProcessoViewModel extends ViewModel {
     public void onBuscarClicked() {
 
         _isLoading.setValue(true);
-
+/*
         if(!Validator.isNumProcessoValid(numProcesso.get())) {
             _isLoading.setValue(false);
             _displayAlert.setValue("Para numeração interna do tribunal o número do processo deve ter 17 dígitos");
             return;
         }
+*/
+        fetchProcesso();
 
-        // TODO: Ajustar comarca
-        final MutableLiveData<ApiResponse<Processo>> tempProcesso = processoRepository.getProcesso(numProcesso.get());
+    }
+
+    private void fetchProcesso() {
+        // TODO: Ajustar instância
+        final MutableLiveData<ApiResponse<Processo>> tempProcesso = processoRepository.getProcesso("01772277020148130479", "1");
 
         _processo.addSource(tempProcesso, new Observer<ApiResponse<Processo>>() {
             @Override
@@ -53,7 +60,6 @@ public class ProcessoViewModel extends ViewModel {
                 _processo.postValue(processoApiResponse);
             }
         });
-
     }
 
 }

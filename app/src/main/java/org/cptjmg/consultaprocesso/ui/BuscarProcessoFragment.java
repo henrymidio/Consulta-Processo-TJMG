@@ -26,6 +26,8 @@ import org.cptjmg.consultaprocesso.model.Processo;
 import org.cptjmg.consultaprocesso.util.CommonUtils;
 import org.cptjmg.consultaprocesso.util.Validator;
 
+import java.util.List;
+
 
 public class BuscarProcessoFragment extends BaseFragment {
 
@@ -62,8 +64,10 @@ public class BuscarProcessoFragment extends BaseFragment {
             @Override
             public void onChanged(@Nullable ApiResponse<Processo> processoApiResponse) {
                 hideLoading();
-                if(processoApiResponse != null) {
+                if(processoApiResponse != null && processoApiResponse.getResult().size() == 1) {
+                    // TODO: Passar objeto processo para o fragment de detalhes
                     ProcessoDetalhesFragment processoDetalhes = new ProcessoDetalhesFragment();
+                    processoDetalhes.setProcesso(processoApiResponse.getResult().get(0));
                     android.support.v4.app.FragmentTransaction ft = fragmentManager.beginTransaction();
                     ft.addToBackStack(null);
                     ft.add(R.id.fragment_container, processoDetalhes);

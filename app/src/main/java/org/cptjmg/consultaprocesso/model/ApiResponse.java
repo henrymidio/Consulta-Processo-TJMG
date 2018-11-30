@@ -1,8 +1,10 @@
 package org.cptjmg.consultaprocesso.model;
 
+import java.util.List;
+
 public class ApiResponse<T> {
     private String status_code;
-    private T result;
+    private List<T> result;
 
     private String error;
     private String message;
@@ -18,11 +20,11 @@ public class ApiResponse<T> {
         this.status_code = status_code;
     }
 
-    public T getResult() {
+    public List<T> getResult() {
         return result;
     }
 
-    public void setResult(T result) {
+    public void setResult(List<T> result) {
         this.result = result;
     }
 

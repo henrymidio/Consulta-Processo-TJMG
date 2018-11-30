@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="processo" type="org.cptjmg.consultaprocesso.model.Processo"/>
     </data>
@@ -60,53 +61,10 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/container_partes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="RÉU"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/reu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{processo.partes.reu}" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="AUTOR"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/vitima"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{processo.partes.vitima}" />
-
-        </LinearLayout>
+        android:orientation="vertical">
 
     </LinearLayout>
 

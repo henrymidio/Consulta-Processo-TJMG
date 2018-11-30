@@ -8,7 +8,7 @@ public class Processo {
     private String classe;
 
     private List<Movimentacao> movimentacao = new ArrayList<>();
-    private Partes partes;
+    private List<String> partes;
 
     public Processo() {
     }
@@ -37,11 +37,11 @@ public class Processo {
         this.movimentacao = movimentacao;
     }
 
-    public Partes getPartes() {
+    public List<String> getPartes() {
         return partes;
     }
 
-    public void setPartes(Partes partes) {
+    public void setPartes(List<String> partes) {
         this.partes = partes;
     }
 }
