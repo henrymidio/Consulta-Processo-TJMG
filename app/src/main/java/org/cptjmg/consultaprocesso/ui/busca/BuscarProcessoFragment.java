@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,8 +63,17 @@ public class BuscarProcessoFragment extends BaseFragment {
                     ft.addToBackStack(null);
                     ft.add(R.id.fragment_container, processoDetalhes);
                     ft.commit();
-                } else {
-                    Toast.makeText(getContext(), "Erro", Toast.LENGTH_LONG).show();
+                }
+                else if(processoApiResponse != null && processoApiResponse.getResult().size() > 1) {
+                    ProcessosListaFragment processosListaFragment = new ProcessosListaFragment();
+                    android.support.v4.app.FragmentTransaction ft = fragmentManager.beginTransaction();
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    ft.addToBackStack(null);
+                    ft.add(R.id.fragment_container, processosListaFragment);
+                    ft.commit();
+                }
+                else {
+                    Toast.makeText(getContext(), "Servidor não encontrado", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -86,6 +96,17 @@ public class BuscarProcessoFragment extends BaseFragment {
             }
         });
 
+        processoViewModel.navigateToScanner.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                CameraFragment cameraFragment = new CameraFragment();
+                android.support.v4.app.FragmentTransaction ft = fragmentManager.beginTransaction();
+                ft.addToBackStack(null);
+                ft.add(R.id.fragment_container, cameraFragment);
+                ft.commit();
+            }
+        });
+
         return binding.getRoot();
 
     }
@@ -96,6 +117,7 @@ public class BuscarProcessoFragment extends BaseFragment {
         builder.setMessage(message)
                 .setTitle("Atenção");
         builder.setPositiveButton("OK", null);
+
         AlertDialog dialog = builder.create();
 
         dialog.show();

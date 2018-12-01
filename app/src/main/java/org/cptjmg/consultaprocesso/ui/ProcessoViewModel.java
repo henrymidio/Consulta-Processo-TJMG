@@ -8,6 +8,8 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Context;
 import android.databinding.ObservableField;
 import android.support.annotation.Nullable;
+import android.util.Log;
+
 import org.cptjmg.consultaprocesso.data.ProcessoRepository;
 import org.cptjmg.consultaprocesso.model.ApiResponse;
 import org.cptjmg.consultaprocesso.model.Processo;
@@ -19,6 +21,10 @@ import java.util.List;
 public class ProcessoViewModel extends ViewModel {
 
     public ObservableField<String> numProcesso = new ObservableField<>();
+    private int instancia;
+
+    private SingleLiveEvent<String> _navigateToScanner = new SingleLiveEvent<>();
+    public SingleLiveEvent<String> navigateToScanner = _navigateToScanner;
 
     private SingleLiveEvent<String> _displayAlert = new SingleLiveEvent();
     public LiveData<String> displayAlert = _displayAlert;
@@ -41,7 +47,7 @@ public class ProcessoViewModel extends ViewModel {
 /*
         if(!Validator.isNumProcessoValid(numProcesso.get())) {
             _isLoading.setValue(false);
-            _displayAlert.setValue("Para numeração interna do tribunal o número do processo deve ter 17 dígitos");
+            _displayAlert.setValue("Para numeração interna do tribunal o número do processo deve ter 17 dígitos. Para numeração única nacional (número CNJ) deve ter 20 dígitos");
             return;
         }
 */
@@ -49,9 +55,17 @@ public class ProcessoViewModel extends ViewModel {
 
     }
 
+    public void onScannerClicked() {
+        _navigateToScanner.call();
+    }
+
+    public void onRadioChange(int i) {
+        instancia = i;
+    }
+
     private void fetchProcesso() {
-        // TODO: Ajustar instância
-        final MutableLiveData<ApiResponse<Processo>> tempProcesso = processoRepository.getProcesso("01772277020148130479", "1");
+        // TODO: Ajustar parâmetros
+        final MutableLiveData<ApiResponse<Processo>> tempProcesso = processoRepository.getProcesso("14569522020088130479", 2);
 
         _processo.addSource(tempProcesso, new Observer<ApiResponse<Processo>>() {
             @Override

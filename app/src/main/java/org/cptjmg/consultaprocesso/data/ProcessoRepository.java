@@ -24,7 +24,7 @@ public class ProcessoRepository {
         retrofit = NetworkServiceLocator.getRetrofit();
     }
 
-    public MutableLiveData<ApiResponse<Processo>> getProcesso(String numProcesso, String instancia) {
+    public MutableLiveData<ApiResponse<Processo>> getProcesso(String numProcesso, int instancia) {
         final MutableLiveData<ApiResponse<Processo>> result = new MutableLiveData<>();
 
         ProcessoService service = retrofit.create(ProcessoService.class);
@@ -33,7 +33,6 @@ public class ProcessoRepository {
         repos.enqueue(new Callback<ApiResponse<Processo>>() {
             @Override
             public void onResponse(Call<ApiResponse<Processo>> call, Response<ApiResponse<Processo>> response) {
-                //Log.e("vitima", response.body().getResult().);
                 try {
                     if(response.isSuccessful()) {
                         //Log.e("classe", response.body().getStatus_code());

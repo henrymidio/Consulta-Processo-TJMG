@@ -44,5 +44,10 @@ public class Processo {
     public void setPartes(List<String> partes) {
         this.partes = partes;
     }
+
+    @Override
+    public String toString() {
+        return classe;
+    }
 }
 
