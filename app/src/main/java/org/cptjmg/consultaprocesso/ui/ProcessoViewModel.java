@@ -21,15 +21,15 @@ public class ProcessoViewModel extends ViewModel {
     public ObservableField<String> numProcesso = new ObservableField<>();
 
     private SingleLiveEvent<String> _displayAlert = new SingleLiveEvent();
-    LiveData<String> displayAlert = _displayAlert;
+    public LiveData<String> displayAlert = _displayAlert;
 
     private MutableLiveData<Boolean> _isLoading = new MutableLiveData<>();
-    LiveData<Boolean> isLoading = _isLoading;
+    public LiveData<Boolean> isLoading = _isLoading;
 
     private ProcessoRepository processoRepository;
 
     private MediatorLiveData<ApiResponse<Processo>> _processo = new MediatorLiveData<>();
-    LiveData<ApiResponse<Processo>> processo = _processo;
+    public LiveData<ApiResponse<Processo>> processo = _processo;
 
     public void init(Context context) {
         processoRepository = new ProcessoRepository(context);

@@ -1,21 +1,15 @@
-package org.cptjmg.consultaprocesso.ui;
+package org.cptjmg.consultaprocesso.ui.busca;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.cptjmg.consultaprocesso.BaseFragment;
@@ -23,10 +17,8 @@ import org.cptjmg.consultaprocesso.R;
 import org.cptjmg.consultaprocesso.databinding.FragmentBuscarProcessoBinding;
 import org.cptjmg.consultaprocesso.model.ApiResponse;
 import org.cptjmg.consultaprocesso.model.Processo;
-import org.cptjmg.consultaprocesso.util.CommonUtils;
-import org.cptjmg.consultaprocesso.util.Validator;
-
-import java.util.List;
+import org.cptjmg.consultaprocesso.ui.processodetalhes.ProcessoDetalhesFragment;
+import org.cptjmg.consultaprocesso.ui.ProcessoViewModel;
 
 
 public class BuscarProcessoFragment extends BaseFragment {
@@ -65,9 +57,7 @@ public class BuscarProcessoFragment extends BaseFragment {
             public void onChanged(@Nullable ApiResponse<Processo> processoApiResponse) {
                 hideLoading();
                 if(processoApiResponse != null && processoApiResponse.getResult().size() == 1) {
-                    // TODO: Passar objeto processo para o fragment de detalhes
-                    ProcessoDetalhesFragment processoDetalhes = new ProcessoDetalhesFragment();
-                    processoDetalhes.setProcesso(processoApiResponse.getResult().get(0));
+                    ProcessoDetalhesFragment processoDetalhes = ProcessoDetalhesFragment.newInstance(0);
                     android.support.v4.app.FragmentTransaction ft = fragmentManager.beginTransaction();
                     ft.addToBackStack(null);
                     ft.add(R.id.fragment_container, processoDetalhes);

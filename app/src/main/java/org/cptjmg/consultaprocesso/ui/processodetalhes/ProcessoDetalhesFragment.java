@@ -1,4 +1,4 @@
-package org.cptjmg.consultaprocesso.ui;
+package org.cptjmg.consultaprocesso.ui.processodetalhes;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
@@ -19,6 +19,7 @@ import android.widget.TextView;
 import org.cptjmg.consultaprocesso.R;
 import org.cptjmg.consultaprocesso.databinding.FragmentProcessoDetalhesBinding;
 import org.cptjmg.consultaprocesso.model.Processo;
+import org.cptjmg.consultaprocesso.ui.ProcessoViewModel;
 
 import java.util.List;
 
@@ -32,10 +33,24 @@ public class ProcessoDetalhesFragment extends Fragment {
     public ProcessoDetalhesFragment() {
     }
 
+    // Recebe o índie do processo no array
+    public static ProcessoDetalhesFragment newInstance(int index) {
+        ProcessoDetalhesFragment myFragment = new ProcessoDetalhesFragment();
+
+        Bundle args = new Bundle();
+        args.putInt("index", index);
+        myFragment.setArguments(args);
+
+        return myFragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         processoViewModel = ViewModelProviders.of(getActivity()).get(ProcessoViewModel.class);
+
+        int index = getArguments().getInt("index", 0);
+        processo = processoViewModel.processo.getValue().getResult().get(index);
     }
 
     @Nullable
@@ -57,10 +72,6 @@ public class ProcessoDetalhesFragment extends Fragment {
         createLayoutPartes(binding.containerPartes);
 
         return view;
-    }
-
-    public void setProcesso(Processo processo) {
-        this.processo = processo;
     }
 
     private void createLayoutPartes(LinearLayout ll) {

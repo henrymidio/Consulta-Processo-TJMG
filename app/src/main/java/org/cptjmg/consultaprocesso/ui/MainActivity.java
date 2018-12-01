@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import org.cptjmg.consultaprocesso.R;
+import org.cptjmg.consultaprocesso.ui.busca.BuscarProcessoFragment;
 
 public class MainActivity extends AppCompatActivity {
 

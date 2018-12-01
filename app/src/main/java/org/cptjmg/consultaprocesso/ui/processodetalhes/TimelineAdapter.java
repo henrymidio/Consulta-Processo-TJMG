@@ -1,4 +1,4 @@
-package org.cptjmg.consultaprocesso.ui;
+package org.cptjmg.consultaprocesso.ui.processodetalhes;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
