@@ -16,6 +16,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
     dataBinding {
         enabled = true
     }
@@ -29,6 +32,10 @@ dependencies {
 
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:1.1.1"
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-core:16.0.5'
+    implementation 'com.google.firebase:firebase-ml-vision:18.0.2'
 
     // Camerakit
     implementation 'com.camerakit:camerakit:1.0.0-beta3.10'
@@ -48,3 +55,5 @@ dependencies {
     implementation 'com.github.vipulasri:timelineview:1.0.6'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 }
+
+apply plugin: 'com.google.gms.google-services'

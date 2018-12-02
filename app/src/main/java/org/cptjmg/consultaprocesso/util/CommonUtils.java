@@ -4,6 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.support.v7.app.AppCompatActivity;
 
 import org.cptjmg.consultaprocesso.R;
 
@@ -15,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CommonUtils {
+
         public static ProgressDialog showLoadingDialog(Context context) {
             ProgressDialog progressDialog = new ProgressDialog(context);
             progressDialog.show();
@@ -42,4 +47,15 @@ public class CommonUtils {
             map.put("ano", gc.get(Calendar.YEAR) + "");
             return map;
         }
+
+    public static void vibrate(Context context, int mills) {
+        Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 500 milliseconds
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v.vibrate(VibrationEffect.createOneShot(mills, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            //deprecated in API 26
+            v.vibrate(mills);
+        }
+    }
 }

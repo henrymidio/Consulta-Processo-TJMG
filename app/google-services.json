@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "695701251048",
+    "firebase_url": "https://consulta-processo.firebaseio.com",
+    "project_id": "consulta-processo",
+    "storage_bucket": "consulta-processo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695701251048:android:0b97cbcd75cd6be9",
+        "android_client_info": {
+          "package_name": "org.cptjmg.consultaprocesso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695701251048-17nmui5j9909rqkvcqd502v3qq519bfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2kGVMHixdZ6YTNWssL3HdJqRg8TmGr-k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

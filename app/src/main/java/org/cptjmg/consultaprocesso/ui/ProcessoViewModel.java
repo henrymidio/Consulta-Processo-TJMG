@@ -21,7 +21,7 @@ import java.util.List;
 public class ProcessoViewModel extends ViewModel {
 
     public ObservableField<String> numProcesso = new ObservableField<>();
-    private int instancia;
+    private int instancia = 1;
 
     private SingleLiveEvent<String> _navigateToScanner = new SingleLiveEvent<>();
     public SingleLiveEvent<String> navigateToScanner = _navigateToScanner;
@@ -43,14 +43,13 @@ public class ProcessoViewModel extends ViewModel {
 
     public void onBuscarClicked() {
 
-        _isLoading.setValue(true);
-/*
         if(!Validator.isNumProcessoValid(numProcesso.get())) {
-            _isLoading.setValue(false);
             _displayAlert.setValue("Para numeração interna do tribunal o número do processo deve ter 17 dígitos. Para numeração única nacional (número CNJ) deve ter 20 dígitos");
             return;
         }
-*/
+
+        _isLoading.setValue(true);
+
         fetchProcesso();
 
     }
@@ -64,8 +63,7 @@ public class ProcessoViewModel extends ViewModel {
     }
 
     private void fetchProcesso() {
-        // TODO: Ajustar parâmetros
-        final MutableLiveData<ApiResponse<Processo>> tempProcesso = processoRepository.getProcesso("14569522020088130479", 2);
+        final MutableLiveData<ApiResponse<Processo>> tempProcesso = processoRepository.getProcesso(numProcesso.get(), instancia);
 
         _processo.addSource(tempProcesso, new Observer<ApiResponse<Processo>>() {
             @Override
