@@ -1,5 +1,6 @@
 package org.cptjmg.consultaprocesso.data;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.util.Log;
@@ -18,17 +19,18 @@ public class ProcessoRepository {
 
     private Retrofit retrofit;
     private Context context;
+    private ProcessoService processoService;
 
     public ProcessoRepository(Context context) {
         this.context = context;
         retrofit = NetworkServiceLocator.getRetrofit();
+        processoService = retrofit.create(ProcessoService.class);
     }
 
     public MutableLiveData<ApiResponse<Processo>> getProcesso(String numProcesso, int instancia) {
         final MutableLiveData<ApiResponse<Processo>> result = new MutableLiveData<>();
 
-        ProcessoService service = retrofit.create(ProcessoService.class);
-        Call<ApiResponse<Processo>> repos = service.getProcesso(numProcesso, instancia);
+        Call<ApiResponse<Processo>> repos = processoService.getProcesso(numProcesso, instancia);
 
         repos.enqueue(new Callback<ApiResponse<Processo>>() {
             @Override
@@ -54,6 +56,26 @@ public class ProcessoRepository {
         });
 
         return result;
+    }
+
+    public LiveData<Boolean> pingService() {
+        final MutableLiveData<Boolean> ret = new MutableLiveData<>();
+
+        processoService.pingServer().enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e("resposta", response.body());
+                ret.setValue(true);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e("resposta", t.getMessage());
+                ret.setValue(false);
+            }
+        });
+
+        return ret;
     }
 
 }
