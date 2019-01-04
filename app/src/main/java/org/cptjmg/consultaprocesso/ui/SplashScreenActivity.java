@@ -20,9 +20,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
 
         SplashScreenViewModel splashScreenViewModel = ViewModelProviders.of(this).get(SplashScreenViewModel.class);
         splashScreenViewModel.init(this);

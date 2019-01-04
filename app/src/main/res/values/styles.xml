@@ -8,9 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!--Style for Splash Screen-->
+    <!--Style for Splash Screen
     <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name ="android:windowBackground">@drawable/splash_screen_background</item>
+    </style>
+    -->
+
+    <style name="AppCompat.TelaCheia" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
     </style>
 
 </resources>

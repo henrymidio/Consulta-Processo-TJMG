@@ -5,10 +5,13 @@ import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.util.Log;
 
+import org.cptjmg.consultaprocesso.MainApp;
 import org.cptjmg.consultaprocesso.model.ApiResponse;
 import org.cptjmg.consultaprocesso.model.Processo;
 
 import java.io.IOException;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,7 +20,9 @@ import retrofit2.Retrofit;
 
 public class ProcessoRepository {
 
+
     private Retrofit retrofit;
+
     private Context context;
     private ProcessoService processoService;
 
